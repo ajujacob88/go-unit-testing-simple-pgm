@@ -1,6 +1,8 @@
 package math
 
-import "testing"
+import (
+	"testing"
+)
 
 type MultiplyData struct {
 	x, y   int
@@ -43,5 +45,55 @@ func TestMultiply(t *testing.T) {
 		} else {
 			t.Logf("Multiply(%d,%d) Passed. Expected %d, Got %d", datum.x, datum.y, datum.result, result)
 		}
+	}
+}
+
+//ref : https://medium.com/code-chasm/unit-test-in-go-8d17d3910818
+
+func TestFactorial(t *testing.T) {
+	type args struct {
+		n uint
+	}
+	tests := []struct { //This line declares a slice called tests. Each element of the slice is a struct with three fields: name (string), args (of type args struct), and want (unsigned integer).
+		name string
+		args args
+		want uint
+	}{
+		{
+			name: "N is 0",
+			args: args{n: 0},
+			want: 1,
+		},
+		{
+			name: "N is 1",
+			args: args{n: 1},
+			want: 1,
+		},
+		{
+			name: "N is 3",
+			args: args{n: 3},
+			want: 6,
+		},
+		{
+			name: "N is 10",
+			args: args{n: 10},
+			want: 3628800,
+		},
+		//to check a fail case
+		{
+			name: "N is 5, just for sample to check fail case",
+			args: args{n: 5},
+			want: 0,
+		},
+	}
+
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			if got := Factorial(tt.args.n); got != tt.want {
+				t.Errorf("got Factorial()=%v, Failed, want %v", got, tt.want)
+			} else {
+				t.Logf("got Factorial()=%v, Passed, want %v", got, tt.want)
+			}
+		})
 	}
 }

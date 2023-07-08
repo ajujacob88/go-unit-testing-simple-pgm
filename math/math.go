@@ -20,3 +20,12 @@ func Divide(x, y int) float64 {
 func Multiply(x, y int) int {
 	return x * y
 }
+
+//ref : https://medium.com/code-chasm/unit-test-in-go-8d17d3910818
+
+func Factorial(n uint) uint {
+	if n <= 1 {
+		return 1
+	}
+	return n * Factorial(n-1)
+}
