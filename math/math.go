@@ -1,4 +1,4 @@
-//ref: https://www.youtube.com/watch?v=XQzTUa9LPU8
+//reference: https://www.youtube.com/watch?v=XQzTUa9LPU8
 
 package math
 
